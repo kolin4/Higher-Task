@@ -1,14 +1,12 @@
 .main {
     width: 100%;
     height: calc(100vh - 50px);
-    border: 1px solid black;
     display: flex;
    
 
     .main-container {
         width: 100%;
         height: 100%;
-        border: 1px solid red;
         display: flex;
         justify-content: space-around;
         flex-direction: column;
@@ -18,10 +16,27 @@
             width: 100%;
             display: flex;
             justify-content: center;
-            align-items: center;
-            strong {
+            align-items: flex-end;
+            .btnBox {
+                width: 40%;
+                border: 1px solid rgb(155, 155, 155);
+                border-radius: 5px;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
                 cursor: pointer;
                 user-select: none;
+                color: rgb(56, 56, 56);
+            }
+            .prev {
+                width: 50%;
+                text-align: center;
+                border-right: 1px solid rgb(155, 155, 155);
+                
+            }
+            .next{
+                width: 50%;
+                text-align: center;
             }
         }
         .images-container {
@@ -34,9 +49,11 @@
             .image {
                 width: 90%;
                 height: 30%;
-                border: 1px solid blue;
                 background-image:  url('./images/200w.gif');
                 background-position: center;
+                -webkit-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+                -moz-box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
+                box-shadow:0 0 10px rgba(0, 0, 0, 0.5);
                 img {
                     width: 100%;
                     height: 100%;

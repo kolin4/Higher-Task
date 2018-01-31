@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import SingleImage from './singleImage';
+import Spinner from '../spinner';
 
 
 class Images extends React.Component {
@@ -9,7 +10,8 @@ class Images extends React.Component {
         this.state= {
             data : [],
             isData : false,
-            page :0 
+            page :0,
+            error :false
         }
     }
     componentDidMount(){
@@ -31,6 +33,9 @@ class Images extends React.Component {
             })
             .catch(error =>{
                 console.log(error);
+                this.setState({
+                    error:true
+                })
                 
             })
     }
@@ -63,16 +68,19 @@ class Images extends React.Component {
     render (){
       
         let imageToLoad = this.state.data.slice(this.state.page,this.state.page+3);
-        console.log(imageToLoad);
+   
         
         return (
             <div className='content'>
                 <div className='main-container'>
                     <div className='navigation'>
-                        <p><strong onClick={this.changePhoto}  data-id='prev'>prev</strong> / <strong data-id='next' onClick={this.changePhoto} >next</strong></p>
+                        <div className='btnBox'>
+                            <div className='prev' onClick={this.changePhoto}  data-id='prev'>prev</div>
+                            <div className='next' data-id='next' onClick={this.changePhoto} >next</div>
+                        </div>
                     </div>
                     <div className='images-container' >
-                    {!this.state.isData ? null : (
+                    {!this.state.isData ? <Spinner /> : (
                         imageToLoad.map( (elem,index)=>{
                             return  <SingleImage  key={elem} imgUrl={elem}/>
                         } )
