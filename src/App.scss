@@ -1,0 +1,22 @@
+@import './stylesheet/header.scss';
+@import './stylesheet/main.scss';
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    
+}
+.App {
+    display: flex;  
+    justify-content: flex-start;
+    flex-direction: column;
+    align-items: flex-start;
+    width: 100%;
+    min-height: 100vh;
+    flex:1;
+}
+.content {
+    width: 95%;
+    margin: 0 auto;
+}

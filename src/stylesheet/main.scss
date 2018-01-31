@@ -1,0 +1,15 @@
+.main {
+    width: 100%;
+    min-height: 90vh;
+    border: 1px solid black;
+    display: flex;
+   
+
+    .main-container {
+        width: 100%;
+        min-height: 100%;
+        border: 1px solid red;
+        display: flex;
+        
+    }
+}
