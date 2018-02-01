@@ -12,10 +12,14 @@ class App extends Component {
         </header>
         <main className='main'>
             <Images />
-        </main>
+        </main> 
+        
       </div>
     );
   }
 }
 
 export default App;
+
+
+

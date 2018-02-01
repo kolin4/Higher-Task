@@ -2,6 +2,7 @@ import React from 'react';
 import axios from 'axios';
 import SingleImage from './singleImage';
 import Spinner from '../spinner';
+import Modal from './modal';
 
 
 class Images extends React.Component {
@@ -11,7 +12,9 @@ class Images extends React.Component {
             data : [],
             isData : false,
             page :0,
-            error :false
+            error :false,
+            modalShow:false,
+            modalImgUrl:''
         }
     }
     componentDidMount(){
@@ -65,6 +68,18 @@ class Images extends React.Component {
             page
         })
     }
+    hideModal = ()=>{
+        this.setState({
+            modalShow:false
+        })
+    }
+    showModal = (url)=>{
+        this.setState({
+            modalShow:true,
+            modalImgUrl:url
+        })
+        
+    }
     render (){
       
         let imageToLoad = this.state.data.slice(this.state.page,this.state.page+3);
@@ -72,6 +87,7 @@ class Images extends React.Component {
         
         return (
             <div className='content'>
+            {this.state.modalShow ? <Modal hideModal={this.hideModal} imgUrl={this.state.modalImgUrl} />: null}
                 <div className='main-container'>
                     <div className='navigation'>
                         <div className='btnBox'>
@@ -82,7 +98,7 @@ class Images extends React.Component {
                     <div className='images-container' >
                     {!this.state.isData ? <Spinner /> : (
                         imageToLoad.map( (elem,index)=>{
-                            return  <SingleImage  key={elem} imgUrl={elem}/>
+                            return  <SingleImage showModal={()=> this.showModal(elem)} key={elem} imgUrl={elem}/>
                         } )
                     )}
                     </div>
