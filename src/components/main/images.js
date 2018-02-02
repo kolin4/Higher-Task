@@ -3,6 +3,7 @@ import axios from 'axios';
 import SingleImage from './singleImage';
 import Spinner from '../spinner';
 import Modal from './modal';
+import Error from '../error';
 
 
 class Images extends React.Component {
@@ -88,6 +89,7 @@ class Images extends React.Component {
         return (
             <div className='content'>
             {this.state.modalShow ? <Modal hideModal={this.hideModal} imgUrl={this.state.modalImgUrl} />: null}
+            {this.state.error ? <Error /> : null}   
                 <div className='main-container'>
                     <div className='navigation'>
                         <div className='btnBox'>
